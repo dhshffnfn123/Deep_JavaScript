@@ -19,3 +19,23 @@ false || "Dog"; // Dog
 "Cat" && "Dog"; // Dog
 false && "Dog"; // false
 "Cat" && false; // false
+
+// 단축 평가를 사용하면 if문을 대체할 수 있다.
+var done = true;
+var message = "";
+
+// 값이 '참'일 경우
+if (done) message = "완료";
+
+message = done && "완료";
+console.log(message);
+
+// 값이 '거짓'일 경우
+var done = false;
+var message = "";
+if (!done) message = "미완료";
+message = done || "미완료";
+console.log(message);
+
+// 단축 평가는 다음과 같은 상황에 유용하다.
+// 1. 객체를 가리키기를 기대하는 변수가 null 또는 undefined가 아닌지 확인하고 프로퍼티를 참조할 때
