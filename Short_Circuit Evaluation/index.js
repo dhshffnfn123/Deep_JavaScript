@@ -39,3 +39,55 @@ console.log(message);
 
 // 단축 평가는 다음과 같은 상황에 유용하다.
 // 1. 객체를 가리키기를 기대하는 변수가 null 또는 undefined가 아닌지 확인하고 프로퍼티를 참조할 때
+// 객체는 키와 값으로 구성된 프로퍼티의 집합이다.
+// 만약 객체를 가리키기를 기대하는 변수의 값이 객체가 아니라 null 또는 undefined인 경우 객체의 프로퍼티를 참조하면 타입에러가 발생하고 강제 종료된다.
+var elem = null;
+// var value = elem.value; // 타입 에러 : can not read property 'value' of null
+
+// 단축 평가로 실행하면 에러가 나지 않는다.
+var value = elem && elem.value; // null
+
+// 2. 함수 매개변수에 기본값을 설정할 때
+// 함수에 인수를 전달하지 않으면 매개변수에는 undefined가 할당된다. 이 때 단축평가를 사용해 매개변수의 기본값을 설정하면 에러를 방지할 수 있다.
+// 기본값 설정
+function getStringLength(str) {
+  str = str || "";
+  return str.length;
+}
+getStringLength(); // 0
+getStringLength("hi"); // 2
+
+// ES6의 기본값 설정
+function getStringLength(str = "") {
+  return str.length;
+}
+getStringLength(); // 0
+getStringLength("hello"); // 5
+
+/* ------------------------------- Optional Chaining (옵셔널 체이닝 연산자) ------------------------------ */
+// ES11에서 도입된 옵셔널 체이닝 연산자 ?.는 좌항의 피연산자가 null 또는 undefined일 경우 undefined를 반환하고,
+// 그렇지 않으면 우항의 프로퍼티 참조를 이어간다.
+var elem = null;
+var value = elem?.value;
+console.log(value); // undefined
+
+// 옵셔널 체이닝 연산자는 객체를 가리키기를 기대하는 변수가 null 또는 undefined가 아닌지 확인하고 프로퍼티를 참조할 때 유용하다.
+var str = "";
+// 문자열의 길이를 참조한다. 이때 좌항 피연산자가 false로 평가되는 Falsy 값이라도 null 또는 undefined가 아니면 우항의 프로퍼티 참조를 이어간다.
+var length = str?.length;
+console.log(length); // 0
+
+/* ------------------------------- null 병합 연산자 ------------------------------ */
+// ES11에서 도입된 null 병합 연산자 ??는 좌항의 피연산자가  null 또는 undefined인 경우 우항의 피연산자를 반환하고,
+// 그렇지 않으면 좌항의 피연산자를 반환한다.
+// null 병합 연산자 ??는 변수에 기본값 설정에 유용하다.
+var foo = null ?? "default string";
+console.log(foo); // default string
+
+// 이전에는 논리연산자 || 를 사용하였지만 ''이나 0도 기본값으로서 유효하다면 예기치 않게 동작할 수 있다.
+var foo = "" || "default string";
+console.log(foo);
+
+// null 병합 연산자는 좌항의 값이 Falsy값이라도 null이나 undefined가 아니라면 좌항의 피연산자를 그대로 반환한다.
+var foo = "" ?? "default String";
+console.log(foo); // ''
