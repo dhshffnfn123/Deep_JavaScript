@@ -12,3 +12,4 @@
 > - **Type Casting :** **타입 캐스팅** 의 특징과 활용 및 원리
 > - **Short_Circuit Evaluation :** **단축 평가** 의 개념과 규칙, 옵셔널 체이닝 연산자, null 병합 연산자
 > - **Object_Literal :** 객체의 프로퍼티와 메서드의 개념 및 접근, 조작법
+> - **Primitive_Object :** 원시 값과 객체의 차이점과 개념, 특성, 원리
