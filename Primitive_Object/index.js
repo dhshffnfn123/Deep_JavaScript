@@ -119,3 +119,32 @@ console.log(c1 === o); // false
 console.log(c1.x === o.x); // true
 // lodash의 cloneDeep을 이용한 깊은 복사
 const _ = require("lodash");
+// 깊은 복사
+const c2 = _.cloneDeep(o);
+console.log(c2 === o); // false
+console.log(c2.x === o.x); // false
+
+/* -------------------------------- 참조에 의한 전달 ------------------------------- */
+var person = {
+  name: "Lee",
+};
+// 참조 값을 복사 (얕은 복사)
+var copy = person; // copy와 person은 동일한 참조 값을 갖는다.
+
+// 두개의 식별자가 하나의 객체를 공유한다.
+// 어느 한쪽에서 객체를 변경하면 둘 다 영향을 받는다.
+
+copy.name = "kim";
+person.address = "Seoul";
+console.log(copy); // {name: kim , address: Seoul}
+console.log(person); // {name: kim , address: Seoul}
+
+// 자바스크립트에는 참조에 의한 전달은 존재하지 않고 값에 의한 전달만 존재한다.
+var person1 = {
+  name: "Lee",
+};
+var person2 = {
+  name: "Lee",
+};
+console.log(person1 === person2); // false
+console.log(person1.name === person2.name); // true
