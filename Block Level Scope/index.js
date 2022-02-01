@@ -48,7 +48,7 @@ var foo; // 호이스팅
 var fooVar = 123;
 var fooVar = 456;
 //let bar = 123;
-//let bar = 123; // SyntaxError: Identifier 'bar' has already been decleared
+// ! let bar = 123; // SyntaxError: Identifier 'bar' has already been decleared
 // 같은 스코프내에서 중복 선언을 허용하지 않는다.
 
 // 2. 블록 레벨 스코프
@@ -59,7 +59,10 @@ let foo1 = 1; // 전역 변수
   let bar = 3;
 }
 console.log(foo1); // 1
-console.log(bar); // RE: bar is not defined
+// ! console.log(bar); // RE: bar is not defined
 // 함수도 코드 블록이므로 스코프를 만든다. 이때 함수 내의 코드 블록은 함수 레벨 스코프에 중첩된다.
 
 // 3.변수 호이스팅
+// var 키워드로 선언한 변수와 달리 let 키워드로 선언한 변수는 변수 호이스팅이 발생하지 않는 것처럼 동작한다.
+// ! console.log(foo); // RE: foo is not defined
+let foo;
