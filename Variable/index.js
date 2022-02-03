@@ -3,7 +3,7 @@ const arr = [1, 2, 3];
 arr.forEach(console.log);
 arr.forEach(alert);
 
-/* ---------------------------- variable hoisting --------------------------- */
+//?/* ---------------------------- variable hoisting --------------------------- */
 console.log(score); // undefined
 var score; // 변수 선언
 score = 80; // 값의 할당
@@ -18,7 +18,7 @@ ask = 123;
 var ask;
 console.log("Ask the Computer : " + ask); // 123
 
-/* ---------------------------- Naming Convention --------------------------- */
+//?/* ---------------------------- Naming Convention --------------------------- */
 // camelCase
 var firstName;
 // snake_case
@@ -27,5 +27,5 @@ var first_name;
 var FirstName;
 // typeHungarianCase
 var strFirstName; // type + identifier
-var $elem = document.getElementById('myId'); // DOM 노드
-var observable$ = fromEvent(document, 'click'); // RxJS 옵저버블
+var $elem = document.getElementById("myId"); // DOM 노드
+var observable$ = fromEvent(document, "click"); // RxJS 옵저버블

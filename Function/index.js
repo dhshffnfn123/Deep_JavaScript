@@ -22,7 +22,7 @@ function add(x, y) {
 var result = add(2, 5);
 console.log(result); // 7
 
-/* ------------------------------- 함수를 사용하는 이유 ------------------------------ */
+//?/* ------------------------------- 함수를 사용하는 이유 ------------------------------ */
 // 함수는 필요할 때 여러번 호출할 수 있다. 즉 실행 시점을 개발자가 결정할 수 있고, 몇번이든 재사용 가능하다.
 // 코드의 재사용 이라는 측면에서 유용하다.
 // 코드의 유지보수의 편의성을 높이고 코드의 신뢰성을 높이는 효과가 있다.
@@ -30,7 +30,7 @@ console.log(result); // 7
 // 함수는 객체이므로 이름을 붙일 수 있다. 이 때 함수의 용도를 명확히 알 수 있도록 설명해야 한다.
 // 적절한 함수의 이름은 코드의 가독성을 높인다.
 
-/* --------------------------------- 함수 리터럴 --------------------------------- */
+//?/* --------------------------------- 함수 리터럴 --------------------------------- */
 // 함수 리터럴은 function키워드, 함수 이름, 매개변수 목록, 함수 몸체로 구성된다.
 var f = function add(x, y) {
   return x + y;
@@ -53,7 +53,7 @@ var f = function add(x, y) {
 // 함수는 객체이다.
 // 함수는 객체이지만 일반객체와 다르다. 일반 객체는 호출할 수 없지만 함수는 호출할 수 있다.
 
-/* ---------------------------------- 함수 정의 --------------------------------- */
+//?/* ---------------------------------- 함수 정의 --------------------------------- */
 // 함수를 정의하는 방법에는 4가지가 있다.
 
 // 1. 함수 선언문
@@ -72,7 +72,7 @@ var add = new Function("x", "y", "return x + y");
 // 변수는 '선언(declaration)'한다고 하지만 함수는 '정의(definition)'한다고 표현한다.
 // 함수 선언문이 평가되면 식별자가 암묵적으로 생성되고 함수객체가 할당된다.
 
-/* --------------------------------- 함수 선언문 --------------------------------- */
+//?/* --------------------------------- 함수 선언문 --------------------------------- */
 // 함수 리터럴과 형태가 동일하지만, 함수 리터럴과 달리 함수 선언문은 함수 이름을 생략할 수 없다.
 // 함수 선언문은 표현식이 아닌 문이다. 따라서 변수에 할당할 수 없다.
 function add(x, y) {
@@ -97,7 +97,7 @@ foo(); // foo
 (function bar() {
   console.log("bar");
 });
-// bar(); // ReferenceError: bar is not defined
+//! bar(); // ReferenceError: bar is not defined
 
 // 함수 몸체 외부에서는 함수 이름으로 함수를 참조할 수 없다. 즉, 함수를 가리키는 식별자가 없다. 따라서 bar는 호출할 수 없다.
 // 함수 선언문으로 선언한 foo라는 함수는 함수이름으로 선언할 수 있었다.
@@ -108,7 +108,7 @@ var add = function add(x, y) {
 console.log(add(2, 5)); // 7
 // 함수는 함수이름으로 호출하는 것이 아니라 함수 객체를 가리키는 식별자로 호출한다.
 
-/* --------------------------------- 함수 표현식 --------------------------------- */
+//?/* --------------------------------- 함수 표현식 --------------------------------- */
 // 자바스크립트의 함수는 값처럼 변수에 할당할 수도 있고 프로퍼티 값이 될 수도 있으며 배열의 요소가 될 수도 있다.
 // 이처럼 값의 성질을 갖는 객체를 일급 객체라 한다. 따라서 자바스크립트의 함수는 일급객체이다.
 // 함수 표현식의 함수이름은 생략하는 것이 일반적이다.
@@ -123,7 +123,7 @@ console.log(add(2, 5));
 
 // 함수 이름으로 호출하면 참조 오류가 발생한다.
 // 함수 이름은 몸체 내부에서만 유효한 식별자다.
-// console.log(foo(2,5)); // RE: foo is not defined
+//! console.log(foo(2,5)); // RE: foo is not defined
 
 // 함수 선언문은 '표현식이 아닌 문'이고 함수 표현식은 '표현식인 문'이다.
 
@@ -134,7 +134,7 @@ console.dir(sub); // undefined
 
 // 함수 호출
 console.log(add(2, 5)); // 7
-// console.log(sub(2, 5)); Type Error: sub is not a function
+//! console.log(sub(2, 5)); Type Error: sub is not a function
 
 // 함수 선언문
 function add(x, y) {
@@ -179,7 +179,7 @@ var add2 = (function () {
   var a = 10;
   return new Function("x", "y", "return x + y + a");
 })();
-// console.log(add2(1, 2)); // RE: a is not defined
+//! console.log(add2(1, 2)); // RE: a is not defined
 
 // 화살표 함수(arrow function)
 // ES6에서 도입된 화살표 함수는 function 키워드 대신 화살표 함수 => 를 사용해 좀 더 간략하게 함수를 선언할 수 있다.
@@ -333,19 +333,18 @@ console.log(multiply(2, 5)); // undefined
 // Node.js는 모듈 시스템에 의해 파일별로 독립적인 파일 스코프를 갖는다.
 // 따라서 Node.js 환경에서는 파일의 가장 바깥영역에 사용해도 에러가 발생하지 않는다.
 
-
 // 참조에 의한 전달과 외부 상태의 변경
 // 매개변수도 함수 몸체 내부에서 변수와 동일하게 취급되므로 매개변수 또한 타입에 따라 값에 의한 전달, 참조의 의한 전달 방식을 따른다.
 
 // 매개변수 primitive는 원시 값을 전달받고, 매개변수 obj는 객체를 반환한다.
 function changeVal(primitive, obj) {
-	primitive += 100;
-	obj.name = 'Kim';
+  primitive += 100;
+  obj.name = "Kim";
 }
 
-// 외부 상태 
+// 외부 상태
 var num = 100;
-var person = {name: 'Lee'};
+var person = { name: "Lee" };
 
 console.log(num); // 100
 console.log(person); // { name: 'Lee'}
@@ -368,57 +367,56 @@ console.log(person); // {name: Kim}
 // 함수 정의와 동시에 호출되는 함수를 즉시 실행 함수(IIFE, Immediately Invoked Function Express)라고 한다.
 // 즉시 실행 함수는 단 한 번만 호출되며 다시 호출할 수 없다.
 (function () {
-	var a = 3;
-	var b = 6;
-	return a * b;
-}());
+  var a = 3;
+  var b = 6;
+  return a * b;
+})();
 
 // 즉시 실행 함수는 함수 이름이 없는 익명 함수를 사용하는 것이 일반적이다.
 // 그룹 연산자(...) 내의 기명 함수는 함수 선언문이 아니라 함수 리터럴로 평가되며 함수이름은 함수 몸체에서만 참조할 수 있으므로 다시 호출할 수 없다.
 
 // 기명 즉시 실행 함수
 (function foo() {
-	var a = 3;
-	var b = 6;
-	return a * b;
-}());
-// foo(); // RE: foo is not defined
+  var a = 3;
+  var b = 6;
+  return a * b;
+})();
+//! foo(); // RE: foo is not defined
 
 // 즉시 실행 함수는 반드시 그룹 연산자(...)로 감싸야 한다.
 // 그룹 연산자의 피연산자는 값으로 평가되므로 기명 또는 무명 함수를 그룹 연산자로 감싸면 함수 리터럴로 평가되어 함수 객체가 된다.
-console.log(typeof(function f(){})); // function
-console.log(typeof(function (){})); // function
+console.log(typeof function f() {}); // function
+console.log(typeof function () {}); // function
 
 // 그룹 연산자 이외의 연산자를 사용할 수 있다.
-(function () {}()); // 가장 일반적인 방법
+(function () {})(); // 가장 일반적인 방법
 
 (function () {})();
 
-!function () {}();
+!(function () {})();
 
-+function () {}();
++(function () {})();
 
 // 즉시 실행 함수도 일반 함수 처럼 값을 반환할 수 있고 인수를 전달할 수 있다.
 res = (function (a, b) {
-	return a * b;
-}(3,5));
+  return a * b;
+})(3, 5);
 console.log(res); // 15
-
 
 // 2. 재귀 함수(recursive function)
 // 함수가 자기자신을 호출하는 것을 재귀 호출(recursive call)라 한다. 재귀 함수는 자기 자신을 호출하는 행위, 즉 재귀 호출을 수행하는 함수이다.
 // 재귀 함수는 반복되는 처리를 위해 사용한다.
 function countDown(n) {
-	if (n < 0) return;
-	console.log(n);
-	countDown(n - 1);
+  if (n < 0) return;
+  console.log(n);
+  countDown(n - 1);
 }
 countDown(10);
 // 이처럼 반복되는 처리를 반복문 없이 처리할 수 있다.
 // 팩토리얼은 1부터 자신까지의 모든 양의 정수의 곱이다.
 function factorial(n) {
-	if(n <= 1) return 1;
-	return n * factorial(n - 1);
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
 }
 console.log(factorial(5)); // 120
 console.log(factorial(3)); // 6
@@ -429,8 +427,8 @@ console.log(factorial(1)); // 1
 
 // 함수 표현식
 var factorial = function foo(n) {
-	if (n <= 1) return 1; // 탈출 조건
-	return n * foo(n - 1);
+  if (n <= 1) return 1; // 탈출 조건
+  return n * foo(n - 1);
 };
 console.log(factorial(10));
 
@@ -444,25 +442,24 @@ console.log(factorial(10));
 // 중첩 함수는 외부 함수 내부에서만 호출할 수 있다.
 // 일반적으로 중첩 함수는 자신을 포함하는 외부 함수를 돕는 헬퍼 함수(helper function)의 역할을 한다.
 function outer() {
-	var x = 1;
-	
-	// 중첩 함수
-	function inner() {
-		var y = 2;
-		// 외부 함수의 변수를 참조할 수 있다.
-		console.log(x + y); // 3
-	}
-	inner();
+  var x = 1;
+
+  // 중첩 함수
+  function inner() {
+    var y = 2;
+    // 외부 함수의 변수를 참조할 수 있다.
+    console.log(x + y); // 3
+  }
+  inner();
 }
 outer();
 
 // ES6부터 함수는 문이 위치할 수 있는 문맥이라면 어디든지 가능하다.(if문이나 for문 등의 코드 블록에서도 정의할 수 있다.)
 // 단, 호이스팅으로 인해 혼란이 발생할 수 있으므로 if문이나 for문에서 정의하는 것은 바람직 하지 않다.
 
-
-// 4. 콜백 함수 
+// 4. 콜백 함수
 function repeat(n) {
-	for (var i = 0; i < n; i++) console.log(i);
+  for (var i = 0; i < n; i++) console.log(i);
 }
 repeat(5); // 0 1 2 3 4
 
@@ -470,32 +467,32 @@ repeat(5); // 0 1 2 3 4
 // 만약 repeat 함수 내부에서 다른 일을 하고 싶다면 함수를 새롭게 정의해야 한다.
 
 function repeat1(n) {
-	for (var i = 0; i < n; i++) console.log(i);
+  for (var i = 0; i < n; i++) console.log(i);
 }
 repeat1(5); // 0 1 2 3 4
 
 function repeat2(n) {
-	for (var i = 0; i < n; i++) if(i % 2) console.log(i);
+  for (var i = 0; i < n; i++) if (i % 2) console.log(i);
 }
 repeat2(5); // 1 3
 
-// 위의 함수들은 반복하는 일은 변하지 않고 공통적으로 수행하지만 반복하면서 하는 일의 내용은 다르다. 
+// 위의 함수들은 반복하는 일은 변하지 않고 공통적으로 수행하지만 반복하면서 하는 일의 내용은 다르다.
 // 즉, 함수의 일부분만 다르기 때문에 매번 함수를 새롭게 정의해야 한다.
 // 이 문제는 함수의 변하지 않는 공통 로직은 미리 정의해 두고, 경우에 따라 변경 되는 로직은 추상화해서 함수 외부에서 함수 내부로 전달하는 것이다.
 
 function repeatCallback(n, f) {
-	for (var i = 0; i < n; i++) {
-		f(i);
-	}
+  for (var i = 0; i < n; i++) {
+    f(i);
+  }
 }
 
 var logAll = function (i) {
-	console.log('logAll : ' + i);
+  console.log("logAll : " + i);
 };
 repeatCallback(5, logAll); // 0 1 2 3 4
 
 var logOdds = function (i) {
-	if (i % 2) console.log('logOdds : ' + i);
+  if (i % 2) console.log("logOdds : " + i);
 };
 repeatCallback(5, logOdds);
 // 경우에 따라 변경되는 일을 함수 f로 추상화하여 외부에서 전달한다.
@@ -509,7 +506,7 @@ repeatCallback(5, logOdds);
 // 익명 함수 리터럴을 콜백 함수로 고차 함수에 전달한다.
 // 익명 함수 리터럴은 repeat 함수를 호출할 때마다 평가되어 함수 객체를 생성한다.
 repeat(5, function (i) {
-	if (i % 2) console.log(i);
+  if (i % 2) console.log(i);
 }); // 1 3
 // repeat 함수가 호출될 때마다 함수 객체가 생성된다.
 // 콜백 함수를 다른 곳에서도 호출하거나, 콜백 함수를 전달받는 함수가 자주 호출된다면
@@ -517,13 +514,13 @@ repeat(5, function (i) {
 
 // 콜백 함수는 함수형 프로그래밍 패러다임뿐만 아니라 비동기 처리(이벤트 처리, Ajax 통신, 타이머 함수 등)에 활용되는 중요한 패턴이다.
 // 콜백 함수를 사용한 이벤트 처리
-document.getElementById('myButton').addEventListener('click', function() {
-	console.log('Button Clicked!');
+document.getElementById("myButton").addEventListener("click", function () {
+  console.log("Button Clicked!");
 });
 
 // 콜백 함수를 사용한 비동기 처리
-setTimeout(function (){
-	console.log('1초 경과');
+setTimeout(function () {
+  console.log("1초 경과");
 }, 1000);
 
 // 5. 순수 함수(pure function)와 비순수 함수(impure function)
@@ -537,29 +534,24 @@ setTimeout(function (){
 // 순수 함수는 인수를 변경하지 않는 것이 기본이다. 다시 말해, 순수 함수는 인수의 불변성을 유지한다.
 var count = 0;
 function increase(n) {
-	return ++n;
+  return ++n;
 }
 
 count = increase(count);
 console.log(count); // 1
 count = increase(count);
 console.log(count); // 2
-
 
 // 비순수 함수는 외부 상태를 변경하는 부수 효과(side effect)가 있다.
 // 비순수 함순느 외부 상태에 의존하거나 외부 상태를 변경하는 함수다.
 
 var count = 0;
 function increase() {
-	return ++count; // 외부 상태에 의존하며 외부 상태를 변경한다.
+  return ++count; // 외부 상태에 의존하며 외부 상태를 변경한다.
 }
 increase();
 console.log(count); // 1
 increase();
 console.log(count); // 2
-// 위와 같이 인수로 전달받지 않고 외부 상태를 직접 참조하면 외부 상태에 의존하게 되어 반환 값이 변할 수 있고, 
+// 위와 같이 인수로 전달받지 않고 외부 상태를 직접 참조하면 외부 상태에 의존하게 되어 반환 값이 변할 수 있고,
 // 외부 상태도 변경할 수 있으므로 비순수 함수가 된다.
-
-
-
-
