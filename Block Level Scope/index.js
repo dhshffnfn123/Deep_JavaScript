@@ -66,3 +66,25 @@ console.log(foo1); // 1
 // var 키워드로 선언한 변수와 달리 let 키워드로 선언한 변수는 변수 호이스팅이 발생하지 않는 것처럼 동작한다.
 // ! console.log(foo); // RE: foo is not defined
 let foo;
+
+// 즉, 선언 단계에서 스코프에 변수 식별자를 등록해 자바스크립트 엔진에 변수의 존재를 알린다.
+// 그리고 즉시 초기화 단계에서 undefined로 변수를 초기화한다.
+
+// var 키워드로 선언한 변수는 런타임 이전에 선언 단계와 초기화 단계가 실행된다.
+// 따라서 변수 선언문 이전에 변수를 참조할 수 있다.
+console.log(foo); // undefined
+var foo;
+console.log(foo); // undefined
+foo = 1;
+console.log(foo); // 1
+
+// TODO let 키워드로 선언한 변수는 "선언단계"와 "초기화 단계"가 분리되어 진행된다.
+// 즉, 런타임 이전에 자바스크립트 엔진에 의해 암묵적으로 선언단계가 먼저 실행되지만
+// 초기화 단계는 변수 선언문에 도달했을 때 실행된다.
+// let 키워드로 선언한 변수는 스코프의 시작 지점부터 초기화 단계 시작 지점까지 변수를 참조할 수 없다.
+// 스코프의 시작 지점부터 초기화 시작 지점까지 변수를 참조할 수 없는 구간을 '일시적 사각지대'(Temporal Dead Zone TDZ)라고 한다.
+// ! console.log(foo); // RE
+let foo;
+console.log(foo); // undefined
+foo = 1;
+console.log(foo);
