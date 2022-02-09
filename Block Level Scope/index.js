@@ -88,3 +88,6 @@ let foo;
 console.log(foo); // undefined
 foo = 1;
 console.log(foo);
+
+// TODO 자바스크립트는 ES6에서 도입된 let, const를 포함해서 모든 선언을 호이스팅한다.
+// 단, ES6에서 도입된 let, const, class를 사용한 선언문은 호이스팅이 발생하지 않는 것 처럼 동작한다.
