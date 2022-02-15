@@ -77,3 +77,67 @@ console.log(Object.getOwnPropertyDescriptor(person, "name"));
 
 // 프로퍼티가 생성될 때 [[Value]]의 값은 프로퍼티 값("Lee")으로 초기화되며,
 // [[Writable]],[[Enumerable]],[[Configurable]]은 true로 초기화된다.
+
+//* 접근자 프로퍼티
+// 접근자 프로퍼티는 자체적으로는 값을 갖지 않고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 사용하는 
+// 접근자 함수로 구성된 프로퍼티이다.
+// 접근자 프로퍼티는 다음과 같은 프로퍼티 어트리뷰트를 갖는다.
+
+//* 1. [[Get]], get
+// 접근자 프로퍼티를 통해 데이터 프로퍼티의 값을 읽을 때 호출되는 접근자 함수이다.
+// 즉, 접근자 프로퍼티 키로 프로퍼티 값에 접근하면 프로퍼티 어트리뷰트 [[Get]]의 값, 
+//즉 getter 함수가 호출되고 그 결과가 프로퍼티 값으로 반환된다.
+
+//* 2. [[Set]], set
+// 접근자 프로퍼티를 통해 데이터 프로퍼티의 값을 저장할 때 호출되는 접근자 함수다.
+// 즉 접근자 프로퍼티 키로 프로퍼티 값을 저장하면 프로퍼티 어트리뷰트 [[Set]]의 값,
+// 즉 Setter 함수가 호출되고 그 결과가 프로퍼티 값으로 저장된다.
+
+//* 3. [[Enumerable]], enumerable
+// 데이터 프로퍼티의 [[Enumerable]]과 같다.
+
+//* 4. [[Configurable]], configurable
+// 데이터 프로퍼티의 [[Configurable]]과 같다.
+
+// 접근자 함수는 setter/getter 함수라고도 부른다.
+// 접근자 프로퍼티는 getter와 setter 함수를 모두 정의할 수도 있고 하나만 정의할 수도 있다.
+const person = {
+  firstName: 'Gildong',
+  lastName: 'Lee',
+
+  // getter 함수
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+  // setter 함수
+  set fullName(name) {
+    [this.firstName, this.lastName] = name.split(' ');
+  }
+};
+// 데이터 프로퍼티를 통한 프로퍼티 값 참조
+console.log(person.firstName + ' ' + person.lastName); // Gildong Lee
+
+// 접근자 프로퍼티를 통한 프로퍼티 값의 저장
+// 접근자 프로퍼티 fullName에 값을 저장하면 setter함수가 호출된다.
+person.fullName = 'Gildong Hong';
+console.log(person); // {firstName: 'Gildong', lastName: 'Hong'}
+
+// 접근자 프로퍼티를 통한 프로퍼티 값의 참조
+// 접근자 프로퍼티 fullName에 접근하면 getter함수가 호출된다.
+console.log(person.fullName); // Gildong Hong
+
+// firstName은 데이터 프로퍼티이다.
+let descriptor = Object.getOwnPropertyDescriptor(person, 'firstName');
+// {value: Gildong, writable: true, enumerable: true, configurable: true}
+
+// fullName은 접근자 프로퍼티이다.
+descriptor = Object.getOwnPropertyDescriptor(person, 'fullName');
+console.log(descriptor);
+// {get: f, set: f, enumerable: true, configurable: true}
+
+// 접근자 프로퍼티 fullName으로 프로퍼티 값에 접근하면 내부적으로 [[Get]] 내부 메서드가 호출되어 다음과 같이 동작한다.
+// 1. 프로퍼티 키가 유효한지 확인한다. 프로퍼티 키는 문자열 또는 심벌이어야 한다. fullName은 문자열이므로 유효하다.
+// 2. 프로토타입 체인에서 프로퍼티를 검색한다. person 객체에 fullName 프로퍼티가 존재한다.
+// 3. 검색된 fullName 프로퍼티가 데이터 프로퍼티인지 접근자 프로퍼티인지 확인한다.
+// 4. 접근자 프로퍼티 fullName의 프로퍼티 어트리뷰트 [[Get]]의 값, 즉 getter 함수를 호출하여 그 결과를 반환한다.
+// [[Get]]의 값은 Object.getOwnPropertyDescriptor 메서드가 반환하는 프로퍼티 디스크립터 객체의 get 프로퍼티 값과 같다.
