@@ -79,13 +79,13 @@ console.log(Object.getOwnPropertyDescriptor(person, "name"));
 // [[Writable]],[[Enumerable]],[[Configurable]]은 true로 초기화된다.
 
 //* 접근자 프로퍼티
-// 접근자 프로퍼티는 자체적으로는 값을 갖지 않고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 사용하는 
+// 접근자 프로퍼티는 자체적으로는 값을 갖지 않고 다른 데이터 프로퍼티의 값을 읽거나 저장할 때 사용하는
 // 접근자 함수로 구성된 프로퍼티이다.
 // 접근자 프로퍼티는 다음과 같은 프로퍼티 어트리뷰트를 갖는다.
 
 //* 1. [[Get]], get
 // 접근자 프로퍼티를 통해 데이터 프로퍼티의 값을 읽을 때 호출되는 접근자 함수이다.
-// 즉, 접근자 프로퍼티 키로 프로퍼티 값에 접근하면 프로퍼티 어트리뷰트 [[Get]]의 값, 
+// 즉, 접근자 프로퍼티 키로 프로퍼티 값에 접근하면 프로퍼티 어트리뷰트 [[Get]]의 값,
 //즉 getter 함수가 호출되고 그 결과가 프로퍼티 값으로 반환된다.
 
 //* 2. [[Set]], set
@@ -102,8 +102,8 @@ console.log(Object.getOwnPropertyDescriptor(person, "name"));
 // 접근자 함수는 setter/getter 함수라고도 부른다.
 // 접근자 프로퍼티는 getter와 setter 함수를 모두 정의할 수도 있고 하나만 정의할 수도 있다.
 const person = {
-  firstName: 'Gildong',
-  lastName: 'Lee',
+  firstName: "Gildong",
+  lastName: "Lee",
 
   // getter 함수
   get fullName() {
@@ -111,15 +111,15 @@ const person = {
   },
   // setter 함수
   set fullName(name) {
-    [this.firstName, this.lastName] = name.split(' ');
-  }
+    [this.firstName, this.lastName] = name.split(" ");
+  },
 };
 // 데이터 프로퍼티를 통한 프로퍼티 값 참조
-console.log(person.firstName + ' ' + person.lastName); // Gildong Lee
+console.log(person.firstName + " " + person.lastName); // Gildong Lee
 
 // 접근자 프로퍼티를 통한 프로퍼티 값의 저장
 // 접근자 프로퍼티 fullName에 값을 저장하면 setter함수가 호출된다.
-person.fullName = 'Gildong Hong';
+person.fullName = "Gildong Hong";
 console.log(person); // {firstName: 'Gildong', lastName: 'Hong'}
 
 // 접근자 프로퍼티를 통한 프로퍼티 값의 참조
@@ -127,11 +127,11 @@ console.log(person); // {firstName: 'Gildong', lastName: 'Hong'}
 console.log(person.fullName); // Gildong Hong
 
 // firstName은 데이터 프로퍼티이다.
-let descriptor = Object.getOwnPropertyDescriptor(person, 'firstName');
+let descriptor = Object.getOwnPropertyDescriptor(person, "firstName");
 // {value: Gildong, writable: true, enumerable: true, configurable: true}
 
 // fullName은 접근자 프로퍼티이다.
-descriptor = Object.getOwnPropertyDescriptor(person, 'fullName');
+descriptor = Object.getOwnPropertyDescriptor(person, "fullName");
 console.log(descriptor);
 // {get: f, set: f, enumerable: true, configurable: true}
 
@@ -141,3 +141,15 @@ console.log(descriptor);
 // 3. 검색된 fullName 프로퍼티가 데이터 프로퍼티인지 접근자 프로퍼티인지 확인한다.
 // 4. 접근자 프로퍼티 fullName의 프로퍼티 어트리뷰트 [[Get]]의 값, 즉 getter 함수를 호출하여 그 결과를 반환한다.
 // [[Get]]의 값은 Object.getOwnPropertyDescriptor 메서드가 반환하는 프로퍼티 디스크립터 객체의 get 프로퍼티 값과 같다.
+
+//* 프로토타입
+// 프로토타입은 어떤 객체의 상위(부모) 객체의 역할을 하는 객체이다.
+// 프로토타입은 하위(자식) 객체에게 자신의 프로퍼티와 메서드를 상속한다.
+// 프로토타입 객체의 프로퍼티나 메서드를 상속받은 하위 객체는 자신의 프로퍼티 또는 메서드인 것처럼 자유롭게 사용할 수 있다.
+
+// 접근자 프로퍼티와 데이터 프로퍼티를 구별하는 방법은 다음과 같다.
+// 일반 객체의 __proto__는 접근자 프로퍼티다.
+Object.getOwnPropertyDescriptor(Object.prototype, "__proto__");
+// {get: f, set: f, enumerable: true, configurable: true}
+Object.getOwnPropertyDescriptor(function () {}, "prototype");
+// {value: {...} writable: true, enumerable: false, configurable: false}
