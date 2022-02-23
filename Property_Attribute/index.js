@@ -153,3 +153,37 @@ Object.getOwnPropertyDescriptor(Object.prototype, "__proto__");
 // {get: f, set: f, enumerable: true, configurable: true}
 Object.getOwnPropertyDescriptor(function () {}, "prototype");
 // {value: {...} writable: true, enumerable: false, configurable: false}
+
+//?/* --------------------------------- 프로퍼티 정의 -------------------------------- */
+// 프로퍼티 정의란 새로운 프로퍼티를 추가하면서 프로펕치 어트리뷰트를 명시적으로 정의하거나,
+// 기존 프로퍼티의 프로퍼티 어트리뷰트를 재정의 하는 것을 말한다.
+// 이를 통해 객체의 프로퍼티가 어떻게 동작해야 하는지를 명확히 정의할 수 있다.
+
+// Object.defineProperty 메서드를 사용하면 프로퍼티의 어트리뷰트를 정의할 수 있다.
+// 인수로는 객체의 참조와 데이터 프로퍼티의 키인 문자열, 프로퍼티 디스크립터 객체를 전달한다.
+const person = {};
+// 데이터 프로퍼티 정의
+Object.defineProperty(person, "firstName", {
+  value: "Gildong",
+  writable: true,
+  enumerable: true,
+  configurable: true,
+});
+
+Object.defineProperty(person, "lastName", {
+  value: "Lee",
+});
+
+let descriptor = Object.getOwnPropertyDescriptor(person, "firstName");
+console.log("firstName", descriptor);
+// {value: Gildong, writable: true, enumerable: true, configurable: true}
+
+// 디스크립터 객체의 프로퍼티를 누락시키면 undefined, false가 기본값이다.
+descriptor = Object.getOwnPropertyDescriptor(person, "lastName");
+console.log("lastName", descriptor);
+// {value: Lee, writable: true, enumerable: true, configurable: true}
+
+// [[Enumerable]]의 값이 false인 경우
+// 해당 프로퍼티는 for...in 문이나 object.keys 등으로 열거할 수 없다.
+// lastName 프로퍼티는 [[Enumerable]]의 값이 false이므로 열거되지 않는다.
+console.log(Object.keys(person));
