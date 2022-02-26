@@ -187,3 +187,72 @@ console.log("lastName", descriptor);
 // 해당 프로퍼티는 for...in 문이나 object.keys 등으로 열거할 수 없다.
 // lastName 프로퍼티는 [[Enumerable]]의 값이 false이므로 열거되지 않는다.
 console.log(Object.keys(person));
+
+// [Configurable]]의 값이 false인 경우 해당 프로퍼티를 삭제할 수 없다,
+// lastName 프로퍼티는 [[Writeable]]의 값이 false이므로 값을 변경할 수 없다.
+// 이때 값을 변경하면 에러는 발생하지 않고 무시된다,
+person.lastName = 'Kim';
+
+descriptor = Object,getOwnPropertyDescriptor(person, 'lastName');
+console.log('lastName', descriptor);
+// lastName {value: "Lee", writable:false, enumerable: false, configurable: false}
+
+// 접근자 프로퍼티 정의 
+Object.defineProperty(person, 'fullName', {
+  //getter 함수
+  get() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+  // setter 함수
+  set(name) {
+    [this,firstName, this.lastName] = name.split(' ');
+  },
+  enumerable: true,
+  configurable: true
+});
+
+descriptor = Object.getOwnPropertyDescriptor(person, 'fullName');
+console.log('fullName', descriptor);
+// fullName {get: f, set: f, enumerable: true, configurable: true}
+
+person.fullName = "ByungHoon An";
+console.log(person);
+
+// Object.fefinedProperty 메서드로 프로퍼티를 정의할 때 프로퍼티를 정의할 때 프로퍼티 디스크립터 객체의 프로퍼티를 일부 생략할 수 있다.
+// 프로퍼티 디스크립터 객체에서 생략된 어트리뷰트는 다음과 같이 기본값이 적용된다.
+// value, [[Value]], undefined
+// get, [[Get]], undefined
+// set, [[Set]], undefined
+// writable, [[Writable]], false
+// enumarable, [[Enumerable]], false
+// configurable, [[Configurable]], false
+
+// Object.defineProperty 메서드는 한번에 하나의 프로퍼티만 정의할 수 있다.
+// Object.defineProperties 메서드를 사용하면 여러개의 프로퍼티를 한번에 정의할 수 있다.
+const person = {};
+Object.defineProperties(person, {
+  firstName: {
+    value: 'ByungHoon',
+    writable: true,
+    enumerable: true,
+    configurable: true
+  },
+  lastName: {
+    value: 'An',
+    writable: true,
+    enumerable: true,
+    configurable: true
+  },
+  fullName: {
+    get() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    set(name) {
+      [this.firstName, this.lastName] = name.split(' ');
+    },
+    enumerable: true,
+    configurable true
+  }
+});
+person.fullName = "ByungHoon An";
+console.log(person);
