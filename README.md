@@ -18,3 +18,4 @@
 > - **Global Variable :** **전역 변수**의 문제점 및 생명주기와 캡슐화, 모듈의 이해
 > - **Block Level Scope :** **블록 레벨 스코프**의 let, const의 특성과 var 키워드의 문제점(변수 호이스팅)
 > - **Property Attribute :** **프로퍼티 어트리뷰트**의 특징 및 데이터 프로퍼티와 접근자 프로퍼티의 특징, 프로토타입의 정의
+> - **Constructor_Object :** **생성자 함수**의 특정 및 원리, 사용법과 new 연산자
