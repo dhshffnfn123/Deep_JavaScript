@@ -262,6 +262,77 @@ function foo() {}
 		return { name, role }
 	}
 
+// 일반함수를 new 연산자와 함께 호출
+inst = new createUser('An', 'admin');
+console.log(inst); // { name: "An", role: "admin" }
+
+// 반대로 new 연산자 없이 생성자 함수를 호출하면 일반 함수로 호출된다. ([[Call]])
+function Circle(radius) {
+  this.radius = radius;
+  this.getDiameter = function () {
+    return 2 * this.radius;
+  };
+}
+
+// new 연산자 없이 생성자 함수 호출하면 일반 함수로서 호출된다.
+const circle = Circle(5);
+console.log(circle); // undefined
+
+// 일반 함수 내부의 this는 전역 객체 window를 가리킨다.
+console.log(redius); // 5
+console.log(getDiameter()); // 10
+
+circle.getDiameter(); // TE: Cannot read property 'getDimeter' of undefined
+// 일반함수의 this는 window를 가리킨다.
+
+// 생성자 함수는 일반적으로 첫 문자를 대문자로 기술하는 파스칼 케이스로 명명하여 일반 함수와 구별할 수 있도록 노력한다.
+
+
+// new.target
+// 생성자 함수가 new 연산자 없이 호출되는 것을 방지하기 위해 ES6에서는 new.target을 지원한다.
+// new.target은 this와 유사하게 constructor인 모든 함수 내부에서 암묵적인 지역 변수와 같이 사용되어 메타 프로퍼티라고 부른다. IE는 지원하지 않는다.
+// TODO 함수 내부에서 new.target을 사용하면 new 연산자와 함께 생성자 함수로서 호출되었는지 확인할 수 있다.
+// TODO new 연산자와 함께 생성자 함수로서 호출되면 함수 내부의 new.target은 함수 자신을 가리킨다.
+// TODO new 연산자 없이 일반 함수로서 호출된 함수 내부의 new.target은 undefined이다.
+
+function Circle(radius) {
+  if(!new.target) {
+    // new 연산자와 함께 생성자 함수를 재귀 호출하여 생성된 인스턴스를 반환한다.
+    return new Circle(radius);
+  }
+  this.radius = radius;
+  this.getDiameter = function () {
+    return 2 * this.radius;
+  };
+}
+
+// new 연산자 없이 생성자 함수를 호출하여도 new.target을 통해 생성자 함수로서 호출된다.
+const circle = Circle(5);
+console.log(circle.getDiameter());
+
+// Object와 Function 생성자 함수는 new 연산자 없이 호출해도 new 연산자와 함께 호출했을때와 동일하게 동작한다.
+let obj = new Object();
+console.log(obj);
+
+obj = Object();
+console.log(obj);
+
+let f = new Function('x', 'return x ** x');
+console.log(f); // f anonymous(x) { return x ** x }
+
+f = Function( 'x', 'return x ** x' );
+console.log(f); // f anonymous(x) { return x ** x }
+
+// String, Number, Boolean 함수는 new 연산자와 함께 호출했을 때 String, Number, Boolean객체를 생성하여 반환하지만 new 연산자 없이 호출하면 문자열, 숫자, 불리언 값을 반환한다.
+// 이를 통해 데이터타입을 변환하기도 한다.
+const str = String(123);
+console.log(str, typeof str); // 123 string
+
+const num = Number('123');
+console.log(num, typeof num); // 123 number
+
+const bool = Boolean('true');
+console.log(bool, typeof bool); // true boolean
 
 
 
