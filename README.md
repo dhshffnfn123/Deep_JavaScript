@@ -19,3 +19,4 @@
 > - **Block Level Scope :** **블록 레벨 스코프**의 let, const의 특성과 var 키워드의 문제점(변수 호이스팅)
 > - **Property Attribute :** **프로퍼티 어트리뷰트**의 특징, 데이터 프로퍼티와 접근자 프로퍼티, 프로토타입
 > - **Constructor_Object :** **생성자 함수**의 특정 및 원리, 사용법과 new 연산자
+> - **Function_and_FirstClass Object :** **함수와 일급객체**의 특징, length, caller, name, prototype 등
