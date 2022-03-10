@@ -60,11 +60,11 @@ function Circle(radius) {
   };
 }
 
-const circle1 = new Circle(5);
-const circle2 = new Circle(10);
+const circle3 = new Circle(5);
+const circle4 = new Circle(10);
 
-console.log(circle1.getDiameter()); // 10
-console.log(circle2.getDiameter()); // 20
+console.log(circle3.getDiameter()); // 10
+console.log(circle4.getDiameter()); // 20
 
 // TODO this
 // this는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수이다. this가 가리키는 값, 즉 this 바인딩은 함수 호출 방식에 따라 동적으로 결정된다.
@@ -77,18 +77,18 @@ function foo() {
 // 일반적인 함수
 foo(); // window
 //
-const obj = { foo };
+const obj1 = { foo };
 // 메서드
 obj.foo(); // obj
 // 생성자 함수
-const inst = new foo(); // inst
+const inst1 = new foo(); // inst
 
 // 생성자 함수는 일반 함수와 동일한 방법으로 정의하고 new 연산자와 함께 호출하면 해당 함수는 생성자 함수로 동작한다.
 // new 연산자와 함께 호출하지 않으면 생성자 함수로 동작하지 않는다.
-const circle3 = Circle(15);
+const circle5 = Circle(15);
 
 // 일반 함수로서 호출된 Circle은 반환문이 없으므로 암묵적으로 undefined를 반환한다.
-console.log(circle3); // undefined
+console.log(circle5); // undefined
 // 일반 함수로서 호출된 Circle 내의 this는 전역 객체를 가리킨다.
 console.log(radius); // 15
 
@@ -153,7 +153,7 @@ function Circle(radius) {
 }
 
 // 인스턴스 생성. Circle 생성자 함수는 암묵적으로 this를 반환한다.
-const circle = new Circle(1);
+const circle6 = new Circle(1);
 console.log(circle); // Circle { radius: 1, getDiameter: f }
 
 // 만약 this가 아닌 다른 객체를 명시적으로 반환하면 this가 반환되지 못하고 return문에 명시한 객체가 반환된다.
@@ -167,8 +167,8 @@ function Circle(radius) {
 }
 
 // 인스턴스 생성. Circle 생성자 함수는 명시적으로 반환한 객체를 반환한다.
-const circle = new Circle(1);
-console.log(circle); // {}
+const circle7 = new Circle(1);
+console.log(circle7); // {}
 
 // 하지만 명시적으로 원시 값을 반환하면 원시 값 반환은 무시되고 암묵적으로 this가 반환된다.
 function Circle(radius) {
@@ -179,8 +179,8 @@ function Circle(radius) {
   return 100; // 무시되고 this가 암묵적으로 반환된다.
 }
 
-const circle = new Circle(1);
-console.log(circle); // Circle { radius: 1, getDiameter: f }
+const circle8 = new Circle(1);
+console.log(circle8); // Circle { radius: 1, getDiameter: f }
 
 // TODO 이처럼 생성자 함수 내부에서 명시적으로 this가 아닌 다른 값을 반환하는 것은 기본 동작을 훼손한다. 따라서 return 문을 반드시 생략해야 한다.
 
@@ -223,10 +223,10 @@ new baz.x(); // x {}
 const arrow = () => {};
 new arrow(); // TE: arrow is not a constructor
 
-const obj = {
+const obj2 = {
   x() {},
 };
-new obj.x(); //TE: obj.x is not a constructor
+new obj2.x(); //TE: obj.x is not a constructor
 
 // 함수를 프로퍼티 값으로 사용하면 일반적으로 메서드라고 통칭한다. 하지만 ECMAScript 사양에서 메서드란 ES6의 메서드 축약 표현만을 의미한다.
 // 즉 함수 선언문과 함수 표현식으로 정의된 함수만이 constructor이고 ES6의 화살표 함수와 메서드 축약 표현으로 정의된 함수는 non-constructor이다.
@@ -268,8 +268,8 @@ function Circle(radius) {
 }
 
 // new 연산자 없이 생성자 함수 호출하면 일반 함수로서 호출된다.
-const circle = Circle(5);
-console.log(circle); // undefined
+const circle9 = Circle(5);
+console.log(circle9); // undefined
 
 // 일반 함수 내부의 this는 전역 객체 window를 가리킨다.
 console.log(redius); // 5
