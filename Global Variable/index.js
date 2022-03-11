@@ -17,7 +17,7 @@ function foo() {
   return x;
 }
 foo();
-// console.log(x); // RE: x is not defined
+// console.log(x); //! RE: x is not defined
 // 지역 변수 x는 함수가 호출되기 전까지는 생성되지 않는다.
 
 // 호이스팅은 전역 변수에 한정된 것이다.
@@ -72,7 +72,7 @@ console.log(x1); // 글로벌
 (function () {
   var foo = 10; // 즉시 실행 함수의 지역 변수
 })();
-// console.log(foo); //RE : foo is not defined
+// console.log(foo); //! RE : foo is not defined
 // 이 방법을 사용하면 전역 변수를 생성하지 않으므로 라이브러리 등에 자주 사용된다.
 
 // 2. 네임스페이스 객체
