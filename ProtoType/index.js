@@ -13,11 +13,11 @@
 // 실체는 특징이나 성질을 나타내는 속성을 가지고 있고 이를 통해 실체를 인식하거나 구별할 수 있다.
 
 // 다양한 속성 중에서 프로그램에 필요한 속성만 간추려 내어 표현하는 것을 '추상화' 라고 한다.
-const person = {
+const person1 = {
   name: "An",
   address: "Paju",
 };
-console.log(person); // {name: "Lee", address: "Paju" }
+console.log(person1); // {name: "Lee", address: "Paju" }
 
 // TODO 속성을 통해 여러개의 값을 하나의 단위로 구성한 복합적인 자료구조를 객체라 한다.
 // 객체지향 프로그래밍은 독립적인 객체의 집합으로 프로그램을 표현하려는 프로그래밍 패러다임이다.
@@ -59,8 +59,8 @@ function Circle(radius) {
   };
 }
 
-const circle1 = new Circle(1);
-const circle2 = new Circle(2);
+const circle11 = new Circle(1);
+const circle22 = new Circle(2);
 // Circle 생성자 함수는 인스턴스를 생성할 때마다 동일한 동작을 하는
 // getArea 메서드를 중복 생성하고 모든 인스턴스가 중복 소유한다.
 // getArea 메서드는 하나만 생성하여 모든 인스턴스가 공유해서 사용하는 것이 바람직하다.
@@ -108,11 +108,11 @@ console.log(circle2.getArea()); // 12. 56637...
 // [[Prototype]] 내부 슬롯에도 직접 접근할 수 없으며 __proto__ 접근자 프로퍼티를 통해 간접적으로
 // [[Prototype]] 내부 슬롯의 값, 즉 프로토타입에 접근할 수 있다.
 const obj = {};
-const parent = { x: 1 };
+const parent1 = { x: 1 };
 // getter 함수인 get __proto__가 호출되어 obj 객체의 프로토타입을 취득
 obj.__proto__;
 //setter함수인 set __proto__가 호출되어 obj 객체의 프로토타입을 교체
-obj.__proto__ = parent;
+obj.__proto__ = parent1;
 console.log(obj.x); // 1
 
 //* 2. __proto__ 접근자 프로퍼티는 상속을 통해 사용된다.
@@ -198,8 +198,8 @@ function Person(name) {
   this.name = name;
 }
 
-const me = new Person("Lee");
-console.log(Person.prototype === me.__proto__); // true
+const me1 = new Person("Lee");
+console.log(Person.prototype === me1.__proto__); // true
 
 //* 프로토타입의 constructor 프로퍼티와 생성자 함수
 // 모든 프로토타입은 constructor 프로퍼티를 갖는다.
@@ -208,9 +208,9 @@ console.log(Person.prototype === me.__proto__); // true
 function Person(name) {
   this.name = name;
 }
-const me = new Person("Lee");
+const me2 = new Person("Lee");
 // me 객체의 생성자 함수는 Person이다.
-console.log(me.constructor === person); // true
+console.log(me2.constructor === person); // true
 
 //?/* -------------------- 리터럴 표기법에 의해 생성된 객체의 생성자 함수와 프로토타입 ------------------- */
 // 생성자 함수에 의해 생성된 인스턴스는 프로토타입의 constructor 프로퍼티에 의해 생성자 함수와 연결된다.
@@ -218,8 +218,8 @@ console.log(me.constructor === person); // true
 const obj = new Object();
 console.log(obj.constructor === Object); // true
 
-const add = new Function("a", "b", "return a + b");
-console.log(add.constructor === Function); // true
+const add1 = new Function("a", "b", "return a + b");
+console.log(add1.constructor === Function); // true
 
 function Person(name) {
   this.name = name;
