@@ -240,7 +240,8 @@ const obj = {};
 // 하지만 obj 객체의 생성자 함수는 Object 생성자 함수이다.
 console.log(obj.constructor === Object); // true
 
-// Object 생성자 함수에 인수를 전달하지 않거나 undefined 또는 null을 인수로 전달하면서 호출하면 내부적으로는 추상 연산 OridinaryObjectCreate를 호출하여 Object.prototype을 프로토타입으로 갖는 빈 객체를 생성한다,
+// Object 생성자 함수에 인수를 전달하지 않거나 undefined 또는 null을 인수로 전달하면서 호출하면
+// 내부적으로는 추상 연산 OridinaryObjectCreate를 호출하여 Object.prototype을 프로토타입으로 갖는 빈 객체를 생성한다,
 
 // 인수가 전달되지 않았을 때 추상 연산 OrdinaryObjectCreate를 호출하여 빈 객체를 생성한다.
 let obj = new Object();
@@ -391,7 +392,8 @@ meee.hasOwnProperty("name");
 console.log(meee.foo);
 
 //* 프로토타입 체인은 상속과 프로퍼티 검색을 위한 메커니즘 이라고 할 수 있다.
-// 이에반해 프로퍼티가 아닌 식별자는 스코프 체인에서 검색한다. 다시 말해, 자바스크립트 엔진은 함수의 중첩 관계로 이루어진 스코프의 계층적 구조에서 식별자를 검색한다.
+// 이에반해 프로퍼티가 아닌 식별자는 스코프 체인에서 검색한다.
+// 다시 말해, 자바스크립트 엔진은 함수의 중첩 관계로 이루어진 스코프의 계층적 구조에서 식별자를 검색한다.
 // * 따라서 스코프 체인은 식별자 검색을 위한 메커니즘이라고 할 수 있다.
 
 //* 스코프 체인과 프로토타입 체인은 서로 연관없이 별도로 동작하는 것이 아니라 서로 협력하여 식별자와 프로퍼티를 검색하는 데 사용한다.
