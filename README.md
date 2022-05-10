@@ -20,4 +20,4 @@
 > - **Property Attribute :** **프로퍼티 어트리뷰트**의 특징, 데이터 프로퍼티와 접근자 프로퍼티, 프로토타입
 > - **Constructor_Object :** **생성자 함수**의 특정 및 원리, 사용법과 new 연산자
 > - **Function_and_FirstClass Object :** **함수와 일급객체**의 특징, length, caller, name, prototype 등
-> - **ProtoType :** **프로토타입**의 정의, OOP(객체지향 프로그래밍), 상속, 프로토타입 객체, \_\_proto\_\_, constructor 등
+> - **ProtoType :** **프로토타입**의 정의, OOP(객체지향 프로그래밍), 상속, 프로토타입 객체, constructor 등
