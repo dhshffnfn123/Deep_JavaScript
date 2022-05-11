@@ -149,7 +149,8 @@ console.log(obj.__proto__); // undefined
 // 따라서 __proto__보다 Object.getPrototypeOf 메서드를 사용하는 편이 좋다.
 console.log(Object.getPrototypeOf(obj)); // null
 
-// __proto__ 접근자 프로퍼티 대신 프로토타입의 참조를 취득하고 시은 경우에는 Object.getPropertyOf메서드를 사용하고 프로토타입을 교체하고 싶은 경우에는 Object.setProrpertyOf 메서드를 사용할 것을 권장한다.
+// __proto__ 접근자 프로퍼티 대신 프로토타입의 참조를 취득하고 시은 경우에는 Object.getPropertyOf메서드를 사용하고
+// 프로토타입을 교체하고 싶은 경우에는 Object.setProrpertyOf 메서드를 사용할 것을 권장한다.
 const obj = {};
 const parent = { x: 1 };
 Object.getPrototypeOf(obj); // obj.__proto__;
