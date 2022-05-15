@@ -19,7 +19,7 @@ o.__proto__; // Object.prototype
 // 프로퍼티 어트리뷰트는 자바스크립트 엔진이 관리하는 내부 상태값(meta-property)인
 // 내부 슬롯[[Value]], [[Writable]], [[Enumerable]], [[Configurable]]이다.
 // 따라서 프로퍼티 어트리뷰트에 직접 접근할 수 없지만 Object.getOwnPropertyDescriptor 메서드를 사용하여 간접적으로 확인할 수는 있다.
-const person = {
+const person1 = {
   name: "Lee",
 };
 // 프로퍼티 어트리뷰트 정보를 제공하는 프로퍼티 디스크립터 객체를 반환한다.
@@ -29,7 +29,7 @@ console.log(Object.getOwnPropertyDescriptor(person, "name"));
 // Object.getOwnPropertyDescriptor 메서드를 호출할 때 첫 번째 매개변수에는 객체의 참조를 전달하고,
 // 두 번째 매개변수에는 프로퍼티 키를 문자열로 전달한다.
 // 이때 메서드는 프로퍼티 어트리뷰트를 제공하는 프로퍼티 디스크립터 객체를 반환한다.
-const person = {
+const person2 = {
   name: "Lee",
 };
 person.age = 20;
@@ -69,7 +69,7 @@ console.log(Object.getOwnPropertyDescriptor(person));
 // [[Configurable]]의 값이 false인 경우 해당 프로퍼티의 삭제, 프로퍼티 어트리뷰트 값의 변경이 금지된다.
 // 단, [[Writable]]이 true인 경우 [[Value]]의 변경과 [[Writable]]을 false로 변경하는 것은 허용된다.
 
-const person = {
+const person3 = {
   name: "Lee",
 };
 console.log(Object.getOwnPropertyDescriptor(person, "name"));
@@ -127,7 +127,7 @@ console.log(person); // {firstName: 'Gildong', lastName: 'Hong'}
 console.log(person.fullName); // Gildong Hong
 
 // firstName은 데이터 프로퍼티이다.
-let descriptor = Object.getOwnPropertyDescriptor(person, "firstName");
+let descriptor1 = Object.getOwnPropertyDescriptor(person, "firstName");
 // {value: Gildong, writable: true, enumerable: true, configurable: true}
 
 // fullName은 접근자 프로퍼티이다.
@@ -251,7 +251,7 @@ Object.defineProperties(person, {
       [this.firstName, this.lastName] = name.split(' ');
     },
     enumerable: true,
-    configurable true
+    configurable: true,
   }
 });
 person.fullName = "ByungHoon An";
@@ -356,7 +356,7 @@ Object.defineProperty(person, 'name', {configurable: true }); //! TE: Cannot red
 // 위의 메서드들은 얕은 변경방지(shallow only)로 직속 프로퍼티만 변경이 방지되고 중첩 객체까지는 영향을 주지는 못한다.
 
 const person = {
-	name: 'An'
+	name: 'An',
 	address: { city: 'Seoul' }
 };
 
