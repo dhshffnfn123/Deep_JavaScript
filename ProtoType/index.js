@@ -442,3 +442,21 @@ me.sayHello(); //! TypeError: me3.sayHello is not a function
 //?/* ---------------------------- 프로토타입의 교체 ------------------------------- */
 // 프로토타입은 임의의 다른 객체로 변경할 수 있다. 이것은 부모 객체인 프로토타입을 동적으로 변경할 수 있다는 것을 의미한다.
 // 프로토타입은 생성자 함수 또는 인스턴스에 의해 교체할 수 있다.
+
+//* 생성자 함수에 의한 프로토타입의 교체
+const PersonAn = (function () {
+  function Person(name) {
+    this.name = name;
+  }
+  // 생성자 함수의 prototype 프로퍼티를 통해 프로토타입을 교체
+  Person.prototype = {
+    sayHello() {
+      console.log(`Hi my name is ${this.name}`);
+    },
+  };
+  return Person;
+})();
+const meAn = new PersonAn("Lee");
+
+// 프로토타입으로 교체한 객체 리터럴에는 constructor 프로퍼티가 없다.
+// constructor 프로퍼티는 자바스크립트 엔진이 프로토타입을 생성할 떄 암묵적으로 추가한 프로퍼티이다.
