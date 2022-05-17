@@ -471,4 +471,19 @@ console.log(me.constructor === Object); // true
 // 프로토타입으로 교체한 객체 리터럴에 constructor 프로퍼티를 추가하여 프로토타입의 constructor 프로퍼티를 되살린다.
 
 //* 인스턴스에 의한 프로토타입의 교체
-// 프로토타입은
+// 프로토타입은 생성자 함수의 prototype 프로퍼티뿐만 아니라 인스턴스의 __proto__ 접근자 프로퍼티를 통해 접근할 수 있다.
+// 따라서 인스턴스의 __proto__ 접근자 프로퍼티를 통해 프로토타입을 교체할 수 있다.
+function PersonIN(name) {
+  this.name = name;
+}
+const meIN = new PersonIN("Lee");
+// 프로토타입으로 교체할 객체
+const parentIN = {
+  sayHello() {
+    console.log(`Hi my name is ${this.name}`);
+  },
+};
+// me 객체의 프로토타입을 parent 객체로 교체한다.
+Object.setPrototypeOf(meIN, parentIN);
+// 위 코드는 아래와 동일하게 동작한다.
+// me.__proto__ = parent;
