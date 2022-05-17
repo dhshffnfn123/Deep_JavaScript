@@ -484,6 +484,26 @@ const parentIN = {
   },
 };
 // me 객체의 프로토타입을 parent 객체로 교체한다.
-Object.setPrototypeOf(meIN, parentIN);
+Object.setPrototypeOf(meIN, parentIN); // TODO setPrototypeOf(a, b) => a와 b의 프로토타입을 교체한다.
 // 위 코드는 아래와 동일하게 동작한다.
 // me.__proto__ = parent;
+
+//?/* ----------------------------- instanceof 연산자 ----------------------------- */
+// instanceof 연산자는 이항 연산자로서 좌변에 객체를 가리키는 식별자. 우변에 생성자 함수를 가리키는 식별자를 피연산자로 받는다.
+// 만약 우변의 피연산자가 함수가 아닌 경우 TypeError가 발생한다.
+// 객체 instanceof 생성자 함수
+// TODO 우변의 생성자 함수의 prototype에 바인딩된 객체가 좌변의 객체의 프로토타입 체인상에 존재하면 true로 평가되고 그렇지 않으면 false로 평가된다.
+// 생성자 함수
+function PersonINS(name) {
+  this.name = name;
+}
+const meINS = new PersonINS("An");
+
+// PersonINS.prototype이 meINS 객체의 프로토타입 체인상에 존재하므로 true
+console.log(me instanceof PersonINS); // true
+
+// Object.prototype이 meINS 객체의 프로토타입 체인상에 존재하지 않으므로 false
+console.log(me instanceof Object); // false
+
+// TODO instanceof 연산자는 프로토타입의 constructor 프로퍼티가 가리키는 생성자 함수를 찾는 것이 아니라
+// TODO 생성자 함수의 prototype에 바인딩된 객체가 프로토타입 체인 상에 존재하는지 확인한다.
