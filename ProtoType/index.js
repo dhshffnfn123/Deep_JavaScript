@@ -460,3 +460,15 @@ const meAn = new PersonAn("Lee");
 
 // 프로토타입으로 교체한 객체 리터럴에는 constructor 프로퍼티가 없다.
 // constructor 프로퍼티는 자바스크립트 엔진이 프로토타입을 생성할 떄 암묵적으로 추가한 프로퍼티이다.
+
+// 프로토타입을 교체하면 constructor 프로퍼티의 생성자 함수 간의 연결이 파괴된다.
+console.log(me.constructor === Person); //false
+
+// 프로토타입 체인을 따라 Object.prototype의 constructor 프로퍼티가 검색된다.
+console.log(me.constructor === Object); // true
+
+// 프로토타입을 교체하면 constructor 프로퍼티와 생성자 함수 간의 연결이 파괴된다.
+// 프로토타입으로 교체한 객체 리터럴에 constructor 프로퍼티를 추가하여 프로토타입의 constructor 프로퍼티를 되살린다.
+
+//* 인스턴스에 의한 프로토타입의 교체
+// 프로토타입은
