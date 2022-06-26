@@ -1,6 +1,6 @@
 # ✏ JavaScript
 
-> 🙋‍♂️ JavaScript의 기본 개념과 동작원리를 깊이 있게 학습
+> 🙋‍♂️ JavaScript의 기본 개념과 동작원리를 학습
 
 <br>
 
