@@ -552,6 +552,6 @@ function increase() {
 increase();
 console.log(count); // 1
 increase();
-console.log(count); // 2
+console.log(2); // 2
 // 위와 같이 인수로 전달받지 않고 외부 상태를 직접 참조하면 외부 상태에 의존하게 되어 반환 값이 변할 수 있고,
 // 외부 상태도 변경할 수 있으므로 비순수 함수가 된다.
