@@ -349,7 +349,7 @@ person.name = 'An'; // 무시
 console.log(person); // {name: 'Lee'}
 
 // 프로퍼티 어트리뷰트 재정의가 금지된다.
-Object.defineProperty(person, 'name', {configurable: true }); //! TE: Cannot redefine property: name
+Object.defineProperty(person, 'name', {configurable: true }); //! TypeError: Cannot redefine property: name
 
 
 //? 불변 객체
