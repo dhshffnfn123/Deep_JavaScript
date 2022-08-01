@@ -395,3 +395,4 @@ console.log(Object.isFrozen(person.address)); // true
 person.address.city = "Busan";
 console.log(person); // { name: "Lee", address: { city: "Seoul" }}
 
+console.log(person2)
